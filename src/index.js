@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Square from './Square';
+import Knight from './Knight';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Square black>
+    <Knight />
+  </Square>,
+  document.getElementById('root')
+);
