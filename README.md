@@ -1,14 +1,10 @@
->## A Big Update Is Coming
+# Lonely Knight
 
->React Hot Loader 3 is [on the horizon](https://github.com/gaearon/react-hot-loader/pull/240), and you can try it today ([boilerplate branch](https://github.com/gaearon/react-hot-boilerplate/pull/61), [upgrade example](https://github.com/gaearon/redux-devtools/commit/64f58b7010a1b2a71ad16716eb37ac1031f93915)). It fixes some [long-standing issues](https://twitter.com/dan_abramov/status/722040946075045888) with both React Hot Loader and React Transform, and is intended as a replacement for both. The docs are not there yet, but they will be added before the final release. For now, [this commit](https://github.com/gaearon/redux-devtools/commit/64f58b7010a1b2a71ad16716eb37ac1031f93915) is a good reference.
+This is a follow-through of Dan Abramov's [React DnD tutorial](http://gaearon.github.io/react-dnd/docs-tutorial.html). It renders a knight that can be drag-and-dropped on a chessboard.
 
+This repo was initialized with Dan's [React Hot Reloader](https://github.com/gaearon/react-hot-loader). This sets up Babel, webpack, and live-reloading of React components in the browser.
 
-React Hot Boilerplate
-=====================
-
-The minimal dev environment to enable live-editing React components.
-
-### Usage
+## Setup
 
 ```
 npm install
@@ -16,37 +12,19 @@ npm start
 open http://localhost:3000
 ```
 
-Now edit `src/App.js`.  
-Your changes will appear without reloading the browser like in [this video](http://vimeo.com/100010922).
+## Best Practices
 
-### Linting
+I highly recommend following along with Dan's React DnD tutorial because it walks you through some excellent guidelines for thinking in React.
 
-This boilerplate project includes React-friendly ESLint configuration.
+1. Build components *from the bottom up*. For example, in this repo we have three components: Knight, Square, and Board. Starting from the smallest component allows you to immediately view it and test that it is working.
 
-```
-npm run lint
-```
+2. Use ```PropTypes``` to add type control to props being passed into components. React will then produce useful error messaging in the browser console as you develop, if you ever receive a prop with the wrong type.
 
-### Using `0.0.0.0` as Host
-
-You may want to change the host in `server.js` and `webpack.config.js` from `localhost` to `0.0.0.0` to allow access from same WiFi network. This is not enabled by default because it is reported to cause problems on Windows. This may also be useful if you're using a VM.
-
-### Missing Features
-
-This boilerplate is purposefully simple to show the minimal configuration for React Hot Loader. For a real project, you'll want to add a separate config for production with hot reloading disabled and minification enabled. You'll also want to add a router, styles and maybe combine dev server with an existing server. This is out of scope of this boilerplate, but you may want to look into [other starter kits](https://github.com/gaearon/react-hot-loader/blob/master/docs/README.md#starter-kits).
-
-### Dependencies
-
-* React
-* Webpack
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
-* [babel-loader](https://github.com/babel/babel-loader)
-* [react-hot-loader](https://github.com/gaearon/react-hot-loader)
-
-### Resources
-
-* [Demo video](http://vimeo.com/100010922)
-* [react-hot-loader on Github](https://github.com/gaearon/react-hot-loader)
-* [Integrating JSX live reload into your workflow](http://gaearon.github.io/react-hot-loader/getstarted/)
-* [Troubleshooting guide](https://github.com/gaearon/react-hot-loader/blob/master/docs/Troubleshooting.md)
-* Ping dan_abramov on Twitter or #reactjs IRC
+        import React, { Component } from 'react';
+        export default class Square extends Component {
+          // Square has a property on this.props called black
+          // black should be a boolean value
+        }
+        Square.propTypes = {
+          black: PropTypes.bool
+        }
